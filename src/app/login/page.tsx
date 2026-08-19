@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { Mail, Lock, LogIn, Loader2 } from "lucide-react";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { loginAction } from "@/actions/auth";
 
-export default function LoginPage() {
+function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -23,15 +28,126 @@ export default function LoginPage() {
     setSuccess("");
 
     try {
-      await loginAction(email, password);
-      setSuccess("Login successful! Redirecting...");
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (res?.error) {
+        setError("Invalid email or password");
+      } else {
+        setSuccess("Login successful! Redirecting...");
+        router.push(callbackUrl);
+        router.refresh();
+      }
     } catch (err: any) {
-      setError(err?.message || "Invalid email or password");
+      setError(err?.message || "An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   }
 
+  return (
+    <Card className="relative z-10 w-full max-w-md p-8 scale-in">
+      <div className="text-center mb-8">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+          <LogIn className="h-7 w-7 text-primary" />
+        </div>
+        <h1 className="text-2xl font-bold text-secondary">Welcome Back</h1>
+        <p className="mt-1 text-sm text-gray-500">
+          Sign in to your account to continue
+        </p>
+      </div>
+
+      {error && (
+        <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      {success && (
+        <div className="mb-4 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-700">
+          {success}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="relative">
+          <Mail className="absolute left-3 top-[38px] h-4 w-4 text-gray-400" />
+          <Input
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="pl-10"
+            required
+          />
+        </div>
+
+        <div className="relative">
+          <Lock className="absolute left-3 top-[38px] h-4 w-4 text-gray-400" />
+          <Input
+            label="Password"
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="pl-10"
+            required
+          />
+        </div>
+
+        <div className="flex items-center justify-between">
+          <label className="flex items-center gap-2 text-sm text-secondary cursor-pointer">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
+            />
+            Remember me
+          </label>
+          <Link
+            href="/forgot-password"
+            className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          >
+            Forgot Password?
+          </Link>
+        </div>
+
+        <Button
+          type="submit"
+          variant="primary"
+          className="w-full rounded-full"
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Signing In...
+            </>
+          ) : (
+            "Sign In"
+          )}
+        </Button>
+      </form>
+
+      <p className="mt-6 text-center text-sm text-gray-500">
+        Don&apos;t have an account?{" "}
+        <Link
+          href="/register"
+          className="font-semibold text-primary hover:text-primary/80 transition-colors"
+        >
+          Sign up
+        </Link>
+      </p>
+    </Card>
+  );
+}
+
+export default function LoginPage() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4">
       <img
@@ -40,101 +156,9 @@ export default function LoginPage() {
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="hero-overlay absolute inset-0 z-[1]" />
-      <Card className="relative z-10 w-full max-w-md p-8 scale-in">
-        <div className="text-center mb-8">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-            <LogIn className="h-7 w-7 text-primary" />
-          </div>
-          <h1 className="text-2xl font-bold text-secondary">Welcome Back</h1>
-          <p className="mt-1 text-sm text-gray-500">
-            Sign in to your account to continue
-          </p>
-        </div>
-
-        {error && (
-          <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-            {error}
-          </div>
-        )}
-
-        {success && (
-          <div className="mb-4 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-700">
-            {success}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="relative">
-            <Mail className="absolute left-3 top-[38px] h-4 w-4 text-gray-400" />
-            <Input
-              label="Email"
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="pl-10"
-              required
-            />
-          </div>
-
-          <div className="relative">
-            <Lock className="absolute left-3 top-[38px] h-4 w-4 text-gray-400" />
-            <Input
-              label="Password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="pl-10"
-              required
-            />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2 text-sm text-secondary cursor-pointer">
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
-              />
-              Remember me
-            </label>
-            <Link
-              href="/forgot-password"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              Forgot Password?
-            </Link>
-          </div>
-
-          <Button
-            type="submit"
-            variant="primary"
-            className="w-full rounded-full"
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Signing In...
-              </>
-            ) : (
-              "Sign In"
-            )}
-          </Button>
-        </form>
-
-        <p className="mt-6 text-center text-sm text-gray-500">
-          Don&apos;t have an account?{" "}
-          <Link
-            href="/register"
-            className="font-semibold text-primary hover:text-primary/80 transition-colors"
-          >
-            Sign up
-          </Link>
-        </p>
-      </Card>
+      <Suspense fallback={<div className="text-white text-center">Loading...</div>}>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 }
