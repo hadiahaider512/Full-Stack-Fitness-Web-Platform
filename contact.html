@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          Fitness Platform
+        </a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+      <div class="collapse navbar-collapse" id="menu">
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+               <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="exercise.html">Exercises</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="calculators.html">Calculators</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+             <button class="btn ">
+                <a  href="login.html">Login</a>
+            </button>
+        </ul>
+       </div>
+       </div>
+</nav>
+<section class="bg-success text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold">Get in Touch</h1>
+                <p class="lead mt-3">
+                    We'd love to hear from you! Whether you have a question,
+                    feedback, or need support, our team is here to help.
+                </p>
+                <a href="#contact-form" class="btn btn-light btn-lg mt-3">
+                    Contact Now
+                </a>
+            </div>
+            <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                <img src="images/contact-hero.png"
+                     class="img-fluid"
+                     alt="Contact Us">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Contact Information</h2>
+            <p class="text-muted">
+                We'd love to hear from you. Reach out using any of the methods below.
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm border-0 h-100 p-4">
+                    <div class="card-body">
+                        <i class="fas fa-envelope fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Email Us</h5>
+                        <p class="text-muted mb-1">support@fitlife.com</p>
+                        <small>We reply within 24 hours.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm border-0 h-100 p-4">
+                    <div class="card-body">
+                        <i class="fas fa-phone-alt fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Call Us</h5>
+                        <p class="text-muted mb-1">+92 300 1234567</p>
+                        <small>Mon – Fri | 9:00 AM – 6:00 PM</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm border-0 h-100 p-4">
+                    <div class="card-body">
+                        <i class="fas fa-map-marker-alt fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Location</h5>
+                        <p class="text-muted mb-1">Faisalabad, Pakistan</p>
+                        <small>Available Worldwide Online</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow-sm border-0 h-100 p-4">
+                    <div class="card-body">
+                        <i class="fas fa-clock fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Working Hours</h5>
+                        <p class="text-muted mb-1">Monday – Friday</p>
+                        <small>9:00 AM – 6:00 PM</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="contact-form">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Send Us a Message</h2>
+            <p class="text-muted">
+                Have a question, suggestion, or need assistance? Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number (Optional)</label>
+                        <input type="tel" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" placeholder="Enter subject" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="6" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success px-5 py-2">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light" id="faq">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Frequently Asked Questions</h2>
+      <p class="text-muted">
+        Find answers to the most common questions about our fitness platform.
+      </p>
+    </div>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item mb-3 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button fw-semibold" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faqOne">
+            How do I create an account?
+          </button>
+        </h2>
+        <div id="faqOne" class="accordion-collapse collapse show"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Click on the <strong>Sign Up</strong> button, enter your details,
+            verify your email, and your account will be ready to use.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mb-3 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-semibold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faqTwo">
+            Are the workout plans free?
+          </button>
+        </h2>
+        <div id="faqTwo" class="accordion-collapse collapse"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes! We offer many free workout plans. Premium members get access
+            to personalized programs and advanced features.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mb-3 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-semibold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faqThree">
+            Can beginners use this website?
+          </button>
+        </h2>
+        <div id="faqThree" class="accordion-collapse collapse"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Absolutely! We provide beginner, intermediate, and advanced
+            workout plans suitable for every fitness level.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mb-3 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-semibold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faqFour">
+            How can I contact support?
+          </button>
+        </h2>
+        <div id="faqFour" class="accordion-collapse collapse"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can contact us through the contact form, email us, or call our
+            support team during working hours.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed fw-semibold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faqFive">
+            Can I access the website on my mobile phone?
+          </button>
+        </h2>
+        <div id="faqFive" class="accordion-collapse collapse"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes. Our website is fully responsive and works smoothly on
+            desktops, tablets, and smartphones.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">Follow Us</h2>
+        <p class="text-muted mb-4">
+            Stay connected with us for fitness tips, healthy recipes, and the latest updates.
+        </p>
+        <a href="#" class="btn btn-outline-primary rounded-circle mx-2">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="btn btn-outline-danger rounded-circle mx-2">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="btn btn-outline-info rounded-circle mx-2">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="btn btn-outline-primary rounded-circle mx-2">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="btn btn-outline-danger rounded-circle mx-2">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+</section>
+
+<section class="py-5 text-center text-white bg-success">
+    <div class="container">
+        <h2 class="fw-bold mb-3">
+            Start Your Fitness Journey Today
+        </h2>
+        <p class="lead mb-4">
+            Join our community and take the first step toward a healthier,
+            stronger, and happier lifestyle.
+        </p>
+        <a href="signup.html" class="btn btn-light btn-lg me-3">
+            Get Started
+        </a>
+        <a href="exercise.html" class="btn btn-outline-light btn-lg">
+            Explore Workouts
+        </a>
+    </div>
+</section>
+<footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h4 class="fw-bold text-success">
+                    FitLife
+                </h4>
+                <p class="text-light">
+                    Your fitness partner for workouts,
+                    nutrition guidance, and a healthier lifestyle.
+                </p>
+                <div>
+                    <a href="#" class="text-white me-3">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-white me-3">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-white me-3">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="fw-bold">
+                    Quick Links
+                </h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="index.html" class="text-white text-decoration-none">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="text-white text-decoration-none">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html" class="text-white text-decoration-none">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="text-white text-decoration-none">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="fw-bold">
+                    Support
+                </h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#" class="text-white text-decoration-none">
+                            FAQs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white text-decoration-none">
+                            Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white text-decoration-none">
+                            Terms & Conditions
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="fw-bold">
+                    Contact Us
+                </h5>
+                <p>
+                    <i class="fas fa-envelope me-2"></i>
+                    support@fitlife.com
+                </p>
+                <p>
+                    <i class="fas fa-phone me-2"></i>
+                    +92 300 1234567
+                </p>
+                <p>
+                    <i class="fas fa-location-dot me-2"></i>
+                    Faisalabad, Pakistan
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <p class="mb-0">
+                © 2026 FitLife. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
