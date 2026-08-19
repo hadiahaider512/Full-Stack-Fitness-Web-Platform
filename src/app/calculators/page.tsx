@@ -9,6 +9,12 @@ import {
   Lightbulb,
   Compass,
   ArrowRight,
+  Scale,
+  Flame,
+  Zap,
+  Utensils,
+  Dumbbell,
+  Droplets,
 } from "lucide-react";
 import Tabs from "@/components/ui/Tabs";
 import BmiCalculator from "@/components/calculators/BmiCalculator";
@@ -19,12 +25,12 @@ import ProteinCalculator from "@/components/calculators/ProteinCalculator";
 import WaterIntakeCalculator from "@/components/calculators/WaterIntakeCalculator";
 
 const CALCULATOR_TABS = [
-  { label: "BMI", value: "bmi" },
-  { label: "BMR", value: "bmr" },
-  { label: "TDEE", value: "tdee" },
-  { label: "Calories", value: "calories" },
-  { label: "Protein", value: "protein" },
-  { label: "Water", value: "water" },
+  { label: "BMI", value: "bmi", icon: Scale },
+  { label: "BMR", value: "bmr", icon: Flame },
+  { label: "TDEE", value: "tdee", icon: Zap },
+  { label: "Calories", value: "calories", icon: Utensils },
+  { label: "Protein", value: "protein", icon: Dumbbell },
+  { label: "Water", value: "water", icon: Droplets },
 ];
 
 const BENEFITS = [
@@ -70,7 +76,7 @@ export default function CalculatorsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[400px] overflow-hidden">
+      <section className="relative h-[360px] sm:h-[400px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=80"
           alt="Fitness calculators hero"
@@ -79,11 +85,11 @@ export default function CalculatorsPage() {
         <div className="hero-overlay absolute inset-0 z-[1]" />
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="text-center fade-in">
-            <Activity className="mx-auto mb-4 h-12 w-12 text-white/80" />
-            <h1 className="hero-text text-3xl font-bold text-white sm:text-4xl">
+            <Activity className="mx-auto mb-3 sm:mb-4 h-10 w-10 sm:h-12 sm:w-12 text-white/80" />
+            <h1 className="hero-text text-2xl font-bold text-white sm:text-4xl">
               Fitness Calculators
             </h1>
-            <p className="hero-text mx-auto mt-4 max-w-2xl text-lg text-white/80">
+            <p className="hero-text mx-auto mt-3 max-w-2xl text-sm sm:text-lg text-white/80 px-2">
               Take control of your health by tracking key metrics. Use our
               science-based calculators to understand your body and build a
               smarter fitness plan.
@@ -93,16 +99,17 @@ export default function CalculatorsPage() {
       </section>
 
       {/* Calculator section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
+          {/* Scrollable Tabs Bar for Mobile & Desktop */}
+          <div className="mb-6 sm:mb-8">
             <Tabs
               tabs={CALCULATOR_TABS}
               activeTab={activeTab}
               onTabChange={setActiveTab}
             />
           </div>
-          <div key={activeTab}>
+          <div key={activeTab} className="fade-in">
             <ActiveCalculator />
           </div>
         </div>
@@ -111,17 +118,17 @@ export default function CalculatorsPage() {
       {/* Benefits */}
       <section className="bg-surface-dark py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center fade-in">
+          <div className="mb-10 sm:mb-12 text-center fade-in">
             <h2 className="text-2xl font-bold text-secondary sm:text-3xl">
               Why Use Fitness Calculators?
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-gray-500">
+            <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-gray-500">
               Understanding your body is the first step toward a healthier
               lifestyle. Our calculators give you the data you need to make
               real progress.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 stagger-children">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 stagger-children">
             {BENEFITS.map((benefit) => {
               const Icon = benefit.icon;
               return (
@@ -147,7 +154,7 @@ export default function CalculatorsPage() {
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-white border border-surface-dark shadow-xl fade-in">
-            <div className="flex flex-col items-center gap-8 p-8 sm:flex-row sm:p-12">
+            <div className="flex flex-col items-center gap-8 p-6 sm:p-12 sm:flex-row">
               <div className="hidden sm:block shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
@@ -156,24 +163,24 @@ export default function CalculatorsPage() {
                 />
               </div>
               <div className="text-center sm:text-left">
-                <h2 className="mb-4 text-2xl font-bold text-secondary sm:text-3xl">
+                <h2 className="mb-3 text-2xl font-bold text-secondary sm:text-3xl">
                   Ready to Start Your Journey?
                 </h2>
-                <p className="mb-8 max-w-lg text-gray-500">
+                <p className="mb-6 max-w-lg text-sm sm:text-base text-gray-500">
                   Use our fitness calculators to understand your body and make
                   smarter decisions about your health and training.
                 </p>
                 <div className="flex flex-col items-center gap-4 sm:flex-row">
                   <Link
                     href="/calculators"
-                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white hover:bg-primary/90 transition-colors duration-200"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white hover:bg-primary/90 transition-colors duration-200"
                   >
                     Try a Calculator
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/exercise"
-                    className="inline-flex items-center gap-2 rounded-lg border border-surface-dark bg-white px-6 py-3 text-sm font-medium text-secondary hover:bg-surface-dark transition-colors duration-200"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-surface-dark bg-white px-6 py-3 text-sm font-medium text-secondary hover:bg-surface-dark transition-colors duration-200"
                   >
                     Browse Exercises
                   </Link>

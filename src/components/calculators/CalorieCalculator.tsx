@@ -134,11 +134,11 @@ export default function CalorieCalculator() {
             <label className="block text-sm font-medium text-secondary mb-2">
               Goal
             </label>
-            <div className="flex gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
               {goals.map((g) => (
                 <label
                   key={g.value}
-                  className={`flex-1 text-center cursor-pointer rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex items-center justify-center text-center cursor-pointer rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                     goal === g.value
                       ? g.color
                       : "border-surface-dark text-secondary hover:bg-gray-50"
